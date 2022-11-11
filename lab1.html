@@ -543,9 +543,12 @@ footer{
                alert("Sorry! your browser is not supporting")  
            } }  
          
-       function showPosition(position){  
-         var x = "Your current location is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " +    position.coords.longitude + ")";  
-                  document.getElementById("loc").innerHTML = x;  
+       function showPosition(position){ 
+        var text = document.getElementById('loc');
+        text.value=" ";
+         var x = "Latitude: " + position.coords.latitude + ", " + "Longitude: " +    position.coords.longitude;  
+         
+        text.value += x;
        }  
   </script>
 </body>
