@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="Menu">
+  <xs:complexType>
+<xs:sequence>
+   <xs:element name="Appetiser">
+   <xs:complexType>
+    <xs:sequence>
+      <xs:element name="FoodItem">
+      <xs:complexType>
+        <xs:sequence>
+        
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="price" type="xs:integer"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="spice" >
+                    <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                                <xs:enumeration value="Spicy"/>
+                                <xs:enumeration value="Mildly Spicy"/>
+                                <xs:enumeration value="Not Spicy"/>
+                          </xs:restriction>
+                  </xs:simpleType>
+            </xs:element>
+            <xs:element name="calories">
+              <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                    <xs:pattern value="([0-9])*"/>
+                  </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+
+        </xs:sequence>
+      </xs:complexType>
+      </xs:element>
+</xs:sequence>
+    </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Mains" >
+   <xs:complexType>
+<xs:sequence>
+      <xs:element name="FoodItem">
+      <xs:complexType>
+        <xs:sequence>
+        
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="price" type="xs:integer"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="spice" >
+                    <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                                <xs:enumeration value="Spicy"/>
+                                <xs:enumeration value="Mildly Spicy"/>
+                                <xs:enumeration value="Not Spicy"/>
+                          </xs:restriction>
+                  </xs:simpleType>
+            </xs:element>
+            <xs:element name="calories">
+              <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                    <xs:pattern value="([0-9])*"/>
+                  </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+
+        </xs:sequence>
+      </xs:complexType>
+      </xs:element>
+
+      
+</xs:sequence>
+    </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Dessert">
+   <xs:complexType>
+<xs:sequence>
+      <xs:element name="FoodItem" >
+      <xs:complexType>
+        <xs:sequence>
+        
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="price" type="xs:integer"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="spice" >
+                    <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                                <xs:enumeration value="Spicy"/>
+                                <xs:enumeration value="Mildly Spicy"/>
+                                <xs:enumeration value="Not Spicy"/>
+                          </xs:restriction>
+                  </xs:simpleType>
+            </xs:element>
+             <xs:element name="calories">
+              <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                    <xs:pattern value="([0-9])*"/>
+                  </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+
+        </xs:sequence>
+      </xs:complexType>
+      </xs:element>
+</xs:sequence>
+    </xs:complexType>
+    </xs:element>
+</xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

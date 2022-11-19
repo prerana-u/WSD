@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet type="text/xsl" href="foodstyle.xsl"?>
+
+<Menu  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+xsi:noNamespaceSchemaLocation="food.xsd">
+
+    <Appetiser>
+        <FoodItem>
+            <name>Vegetable Manchurian</name>
+            <price>150</price>
+            <description>
+            Vegetable Manchurian in a delicious gravy.
+            </description>
+            <spice>Spicy</spice>
+            <calories>250</calories>
+        </FoodItem>
+
+        <FoodItem>
+            <name>French Fries</name>
+            <price>120</price>
+            <description>
+            Fried Potatoes served with Mayonaisse on the side.
+            </description>
+            <spice>Not spicy</spice>
+            <calories>400</calories>
+        </FoodItem>
+
+        <FoodItem>
+            <name>Baked Potatoes</name>
+            <price>250</price>
+            <description>
+            Potatoes baked with cheesy goodness and served with Barbeque Sauce.
+            </description>
+            <spice>Mildly Spicy</spice>
+            <calories>350</calories>
+        </FoodItem>
+
+    </Appetiser>
+
+    <Mains>
+
+        <FoodItem>
+            <name>French Toast</name>
+            <price>250</price>
+            <description>
+            Thick slices made from our homemade sourdough bread
+            </description>
+            <spice>Not Spicy</spice>
+            <calories>500</calories>
+        </FoodItem>
+
+        <FoodItem>
+            <name>Pasta in Alfredo Sauce</name>
+            <price>395</price>
+            <description>
+            Pasta served with a delicious Alfredo Sauce.
+            </description>
+            <spice>Mildly Spicy</spice>
+            <calories>950</calories>
+        </FoodItem>
+
+    </Mains>
+
+    <Dessert>
+
+        <FoodItem>
+            <name>Chocolate Cake</name>
+            <price>350</price>
+            <description>
+            Delicious chocolate cake topped with chocolate chips. 
+            </description>
+            <spice>Not Spicy</spice>
+            <calories>500</calories>
+        </FoodItem>
+
+        <FoodItem>
+            <name>Belgian Waffles</name>
+            <price>250</price>
+            <description>
+            Light Belgian waffles covered with strawberries and whipped cream.
+            </description>
+            <spice>Not Spicy</spice>
+            <calories>600</calories>
+        </FoodItem>
+
+        <FoodItem>
+            <name>Tiramisu</name>
+            <price>350</price>
+            <description>
+            Tiramisu is a coffee-flavoured Italian dessert.
+            </description>
+            <spice>Not Spicy</spice>
+            <calories>640</calories>
+        </FoodItem>
+
+    </Dessert>
+
+</Menu>
