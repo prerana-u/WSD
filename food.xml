@@ -2,8 +2,7 @@
 
 <?xml-stylesheet type="text/xsl" href="foodstyle.xsl"?>
 
-<Menu  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-xsi:noNamespaceSchemaLocation="food.xsd">
+<Menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="food.xsd">
 
     <Appetiser>
         <FoodItem>
@@ -22,7 +21,7 @@ xsi:noNamespaceSchemaLocation="food.xsd">
             <description>
             Fried Potatoes served with Mayonaisse on the side.
             </description>
-            <spice>Not spicy</spice>
+            <spice>Not Spicy</spice>
             <calories>400</calories>
         </FoodItem>
 
