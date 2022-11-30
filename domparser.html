@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+    }
+};
+xhttp.open("GET", "food.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+    var xmlDoc = xml.responseXML;
+    var root= xmlDoc.documentElement;
+    var currnode=root.childNodes[1];
+    removedNode= currnode.removeChild(currnode.childNodes[1]);
+    document.getElementById("demo").innerHTML = "removed node: "+removedNode.nodeName;
+}
+</script>
+
+</body>
+</html>

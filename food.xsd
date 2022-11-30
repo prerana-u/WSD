@@ -50,7 +50,7 @@
             <xs:element name="name" type="xs:string"/>
             <xs:element name="price" type="xs:integer"/>
             <xs:element name="description" type="xs:string"/>
-            <xs:element name="spice" >
+            <xs:element name="spice">
                     <xs:simpleType>
                           <xs:restriction base="xs:string">
                                 <xs:enumeration value="Spicy"/>
@@ -60,7 +60,7 @@
                   </xs:simpleType>
             </xs:element>
             <xs:element name="calories">
-              <xs:simpleType>
+              <xs:simpleType>              
                   <xs:restriction base="xs:integer">
                     <xs:pattern value="([0-9])*"/>
                   </xs:restriction>

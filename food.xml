@@ -72,7 +72,6 @@
             <spice>Not Spicy</spice>
             <calories>500</calories>
         </FoodItem>
-
         <FoodItem>
             <name>Belgian Waffles</name>
             <price>250</price>

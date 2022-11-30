@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <table border="1px" id="demo"></table>
+        
+    </div>
+	<button onclick="DeleteNode()" value="Delete Node">Delete Node</button>
+    <br>
+    <button onclick="DeleteNode1()" value="Delete Node">Delete Node</button>
+    <script>
+        var xmlDoc;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+               xmlDoc  = this.responseXML;
+                myFunction();
+               
+            }
+        }
+
+        xhttp.open("GET","food.xml",true);
+        xhttp.send();
+
+        function myFunction(){
+            
+            var x;
+            var table =
+                `<tr>
+                    <th>Name</th>
+                    <th>Spice</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Calories</th>
+                </tr>`;
+
+            var x = xmlDoc.getElementsByTagName("FoodItem");
+  
+            // Start to fetch the data by using TagName 
+            for (i = 0; i < x.length; i++) {
+                table += "<tr><td>" +
+                    x[i].getElementsByTagName("name")[0]
+                    .childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("spice")[0]
+                    .childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("price")[0]
+                    .childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("description")[0]
+                    .childNodes[0].nodeValue + "</td><td>" +
+                    x[i].getElementsByTagName("calories")[0]
+                    .childNodes[0].nodeValue + "</td>";
+            }
+  
+            // Print the xml data in table form
+            document.getElementById("demo").innerHTML = table;
+            
+        }
+		function DeleteNode(){
+            var rootElement = xmlDoc.documentElement;
+            let currNode = rootElement.childNodes[1];
+            let removedNode = currNode.removeChild(currNode.childNodes[1]);
+            myFunction();
+            console.log(removedNode.nodeName);
+		}
+        function DeleteNode1(){
+            var rootElement = xmlDoc.documentElement;
+            var x,y;
+            x = xmlDoc.getElementsByTagName("name")[0];
+            y = x.childNodes[0];
+            x.removeChild(y);
+            myFunction();
+            
+		}
+    </script>
+</body>
+</html>
