@@ -51,7 +51,7 @@ nav > ul > li > a {
 
 
 #ab{
-  margin-left: 1100px;
+  margin-left: 1000px;
 
 }
 body{
@@ -307,7 +307,6 @@ hr {
     font-family: 'Domine', serif;
     font-family: 'Spectral', serif;
     font-size: 20px;
-
 }
 #logocanvas{
   background-color:#f7b8b8;
@@ -350,6 +349,7 @@ footer{
             <audio id="audio" src="./AV/deleazzy.mp3" ></audio>
             <li id="ab"><a href="#about"><b>About</b></a></li>
             <li id="log"><a href="#reg"><b>Register</b></a></li>
+            <li id="log"><a href="Lab4.html"><b>Menu</b></a></li>
         </ul>
         
     </nav>
@@ -413,14 +413,18 @@ footer{
         <p style="margin-bottom: 20px; margin-top:0px;"><b>Please fill in this form to create an account.</b></p>
         
         <form action="action_page.php">
-          <div class="container">    
-            <label> First Name: </label>   
-          <input type="text" name="firstname" placeholder= "Firstname" size="15" required />   
-         
+          <div class="container">  
+            <div id="errdiv" style="margin-left:-10px;">
+              <span id="error"></span>
+            </div>  
+            
+            <label for="fn"> First Name: </label>   
+          <input type="text" name="firstname" id="fn" placeholder= "Firstname" onblur="validateName()" size="15" required />   
+          
           <label> Last Name: </label>   
-          <input type="text" name="lastname" placeholder="Lastname" size="15"required />   
+          <input type="text" name="lastname" id="ln" placeholder="Lastname" onblur="validateName()" size="15"required />   
           <label> Date of Birth: </label>   
-          <input type="date" name="dob" placeholder="Date of Birth" size="15"required />  
+          <input type="date" name="dob" placeholder="Date of Birth" size="15" min="1900-01-01" max="2004-12-31" required />  
           <div>  
           <label>   
           Occupation: :  
@@ -448,18 +452,26 @@ footer{
           Phone :  
           </label>  
           <input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/>   
-          <input type="tel" name="phone" placeholder="Phone No." size="10"/ required>   
+          <div id="errdiv" style="margin-left:-10px;">
+            <span id="error1"></span>
+          </div>  
+          <input type="tel" name="phone" id="phno" placeholder="Phone No." onblur="validatePhone()" size="10" required/>   
           <label>  Current Address :  </label>
           <textarea cols="80" rows="5" placeholder="Current Address" value="address" required>  
           </textarea>  
+          <div id="errdiv" style="margin-left:-10px;">
+            <span id="error2"></span>
+          </div>  
            <label for="email"><b>Email</b></label>  
-           <input type="email" placeholder="Enter Email" name="email" required>  
-            
+           <input type="email" placeholder="Enter Email" name="email" id="email" onblur="validateEmail()" required>  
+           <div id="errdiv" style="margin-left:-10px;">
+            <span id="error3"></span>
+          </div>  
               <label for="psw"><b>Password</b></label>  
-              <input type="password" placeholder="Enter Password" name="psw" required>  
+              <input type="password" placeholder="Enter Password" name="psw" id="pass1" onblur="validatePassword()" required>  
             
               <label for="psw-repeat"><b>Confirm Password</b></label>  
-              <input type="password" placeholder="Confirm Password" name="psw-repeat" required>  
+              <input type="password" placeholder="Confirm Password" name="psw-repeat" id="cpass" onblur="validatePassword()" required>  
               <button type="submit" class="registerbtn">Register</button> 
               </div>
         </form>
@@ -522,7 +534,11 @@ footer{
         Your browser does not support the HTML canvas tag.
         </canvas>
     </footer>
-    <script>
+   
+    <script type="text/javascript">  
+
+        //canvas
+        
         var c = document.getElementById("logocanvas");
         var ctx = c.getContext("2d");
         ctx.font = "20px Roboto Mono, monospace";
@@ -531,10 +547,10 @@ footer{
         gradient.addColorStop(1, "rgb(255, 255, 167)");
         ctx.fillStyle = gradient;
         ctx.fillText("©️DelEazzy",10,50);
-    </script>
-    <script>  
-      var x= document.getElementById("location");  
-      function getlocation() {  
+        var x= document.getElementById("location");  
+
+        //geolocation
+        function getlocation() {  
           if(navigator.geolocation){  
               navigator.geolocation.getCurrentPosition(showPosition)  
             }  
@@ -543,13 +559,139 @@ footer{
                alert("Sorry! your browser is not supporting")  
            } }  
          
-       function showPosition(position){ 
+        function showPosition(position){ 
         var text = document.getElementById('loc');
         text.value=" ";
         var x = "Latitude: " + position.coords.latitude + ", " + "Longitude: " +    position.coords.longitude;  
          
         text.value += x;
+
        }  
+       
+
+       //Validate First and Last Name
+
+       const element = document.getElementById("fn");
+        element.addEventListener("keypress", function (e) 
+        {
+           preventnum(e);
+        });
+
+        const element1 = document.getElementById("ln");
+        element1.addEventListener("keypress", function (e) 
+        {
+           preventnum(e);
+        });
+
+        function preventnum(e) {
+          if (!isNaN(e.key)) {
+              e.preventDefault();
+          }
+        }
+
+       function validateName()
+       {
+            var regName =  /^[a-zA-Z ]{2,30}$/;
+            var name = document.getElementById('fn').value;
+            var name1=document.getElementById('ln').value;
+            var error = document.getElementById("error");
+            if (!regName.test(name) && name!='')
+            {
+              error.textContent = "Please enter a valid first name";
+              error.style.color = "red";
+              document.getElementById("fn").value='';
+              document.getElementById("fn").focus();
+            }
+
+            else if(!regName.test(name1) && name1!='') 
+            {
+              error.textContent = "Please enter a valid last name";
+              error.style.color = "red";
+              document.getElementById("ln").value='';
+              document.getElementById("ln").focus();
+            }
+
+            else 
+            {
+              error.textContent = ""
+            }
+            
+        }
+
+        //validating phone number
+        const element2 = document.getElementById("phno");
+        element2.addEventListener("keypress", function (e) 
+        {
+           preventalpha(e);
+        });
+
+        function preventalpha(e) {
+          if (isNaN(e.key)) {
+              e.preventDefault();
+          }
+        }
+        function validatePhone()
+       {
+            var regName =  /^[0-9]{10}$/;
+            var name = document.getElementById('phno').value;
+            var error = document.getElementById("error1");
+            if (!regName.test(name) && name!='')
+            {
+              error.textContent = "Please enter a valid phone number(10 digits)";
+              error.style.color = "red";
+              document.getElementById("phno").focus();
+            }
+            
+            else 
+            {
+              error.textContent = ""
+            }
+       }
+
+       //validating email
+      function validateEmail()
+      {
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2})+$/;
+            var name = document.getElementById('email').value;
+            var error = document.getElementById("error2");
+            if (!mailformat.test(name) && name!='')
+            {
+              error.textContent = "Please enter a valid email ID";
+              error.style.color = "red";
+              document.getElementById("email").focus();
+            }
+            
+            else 
+            {
+              error.textContent = ""
+            }
+      }
+
+      //validating password field
+      function validatePassword()
+      {
+        var regpass=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,25}$/;
+        var passwd = document.getElementById('pass1').value;
+        var passwd1=document.getElementById('cpass').value;
+            var error = document.getElementById("error3");
+            if (!regpass.test(passwd) && passwd!='')
+            {
+              error.textContent = "Please enter a strong password";
+              error.style.color = "red";
+              document.getElementById("pass1").focus();
+            }
+            else if((!regpass.test(passwd1) && passwd1!='')|| passwd!=passwd1) 
+            {
+              error.textContent = "Passwords do not match!!";
+              error.style.color = "red";
+              document.getElementById("cpass").focus();
+            }
+            
+            else 
+            {
+              error.textContent = ""
+            }
+      }
   </script>
 </body>
 </html>

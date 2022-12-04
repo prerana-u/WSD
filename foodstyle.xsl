@@ -21,13 +21,13 @@
       <td><xsl:value-of select="price"/></td>
       <td><xsl:value-of select="spice"/></td>
       <xsl:if test="calories >= 500">
-        <td>Associate Project Manager</td>
+        <td>High Calories</td>
     </xsl:if>
     <xsl:if test="calories >= 350 and calories &lt; 450">
-        <td>Team Leader</td>
+        <td>Medium Calories</td>
     </xsl:if>
     <xsl:if test="calories &lt; 350">
-        <td>Developer</td>
+        <td>Low Calories</td>
     </xsl:if> 
 
     </tr>
