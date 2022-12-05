@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            background-color: #da2222;  
+            color: white;  
+            padding: 12px 20px;  
+            margin: 8px 10px;  
+            border: none;  
+            cursor: pointer;  
+            width: 15%;  
+            opacity: 0.9;  
+            font-family: 'Domine', serif;
+            font-family: 'Spectral', serif;
+            font-size: 18px;
+        }
+        #btns{
+            margin:  auto;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="btns">
+        <button type="button" onclick="getCookie()">
+            Read Cookie
+        </button>
+        <button type="button" onclick="setCookie()">
+            Add Cookie
+        </button>
+        <button type="button" onclick="delete_cookie()">
+            Delete Cookie
+        </button>
+      
+    </div>
+
+    <script>
+
+
+        function delete_cookie() 
+        {
+            let name = prompt("Please enter cookie name to delete");
+            document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+        
+        function getCookie() 
+        {
+            let cname = prompt("Please enter cookie name to read");
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                alert(c.substring(name.length, c.length));
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function setCookie() 
+        {
+            let cname = prompt("Please enter cookie name to add");
+            let cvalue= prompt("Please enter value of cookie");
+            const d = new Date();
+            d.setTime(d.getTime() + (3*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+    </script>
+
+</body>
+</html>

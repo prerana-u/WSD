@@ -51,7 +51,7 @@ nav > ul > li > a {
 
 
 #ab{
-  margin-left: 1000px;
+  margin-left: 950px;
 
 }
 body{
@@ -239,7 +239,7 @@ ol{
 }
 
 #reg{
-    background-color: #FEF0F0;
+    
     font-family: 'Domine', serif;
     font-family: 'Spectral', serif;
     text-align: center;
@@ -341,7 +341,7 @@ footer{
       }
   </script>
 </head>
-<body>
+<body onload="setColor()">
     <div id="a" >
     <nav>
         <ul>
@@ -349,7 +349,7 @@ footer{
             <audio id="audio" src="./AV/deleazzy.mp3" ></audio>
             <li id="ab"><a href="#about"><b>About</b></a></li>
             <li id="log"><a href="#reg"><b>Register</b></a></li>
-            <li id="log"><a href="Lab4.html"><b>Menu</b></a></li>
+            <li id="log"><a href="cookies.html"><b>Cookies</b></a></li>
         </ul>
         
     </nav>
@@ -408,11 +408,11 @@ footer{
         </table> 
         
     </div>
-    <div id="reg">
+    <div id="reg" >
         <h2 style="color: #E33333;margin-top: 50px;">Registration Form</h2>
         <p style="margin-bottom: 20px; margin-top:0px;"><b>Please fill in this form to create an account.</b></p>
         
-        <form action="action_page.php">
+        <form id="formid" >
           <div class="container">  
             <div id="errdiv" style="margin-left:-10px;">
               <span id="error"></span>
@@ -424,7 +424,7 @@ footer{
           <label> Last Name: </label>   
           <input type="text" name="lastname" id="ln" placeholder="Lastname" onblur="validateName()" size="15"required />   
           <label> Date of Birth: </label>   
-          <input type="date" name="dob" placeholder="Date of Birth" size="15" min="1900-01-01" max="2004-12-31" required />  
+          <input type="date" name="dob" placeholder="Date of Birth" size="15" min="1900-01-01" max="2004-12-31" id="dob" required />  
           <div>  
           <label>   
           Occupation: :  
@@ -472,7 +472,10 @@ footer{
             
               <label for="psw-repeat"><b>Confirm Password</b></label>  
               <input type="password" placeholder="Confirm Password" name="psw-repeat" id="cpass" onblur="validatePassword()" required>  
-              <button type="submit" class="registerbtn">Register</button> 
+              <label for="colorpicker"><b>Choose a color</b></label>  
+              <input id = "colorpicker" type = "color" value="#ffffff" onchange="changecolor(this)">
+              <br>
+              <button type="submit" class="registerbtn" onclick="storeValues()" >Register</button> 
               </div>
         </form>
         
@@ -651,7 +654,7 @@ footer{
        //validating email
       function validateEmail()
       {
-            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2})+$/;
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
             var name = document.getElementById('email').value;
             var error = document.getElementById("error2");
             if (!mailformat.test(name) && name!='')
@@ -693,5 +696,64 @@ footer{
             }
       }
   </script>
+
+<script>
+//cookies
+
+  function setCookie(cname,cvalue) 
+  {
+    const d = new Date();
+    d.setTime(d.getTime() + (3*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function storeValues()  
+  {
+    setCookie("First Name", document.forms.formid.fn.value);
+    setCookie("Last Name", document.forms.formid.ln.value);
+    setCookie("Phone Number", document.forms.formid.phno.value);
+    sessionStorage.setItem("Email Address", document.forms.formid.email.value);
+    sessionStorage.setItem("Password", document.forms.formid.pass1.value);
+    localStorage.setItem("Date of Birth", document.forms.formid.dob.value);
+  
+  }
+
+  function changecolor(el) {
+
+  document.getElementById("reg").style.backgroundColor = el.value;
+  setCookie("background color", document.forms.formid.colorpicker.value);
+  }
+
+function getCookie(cname) 
+  {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+  }
+
+  function setColor()
+  {
+    let bg = getCookie("background color");
+    document.getElementById("reg").style.backgroundColor = bg;
+
+  }
+
+  function delete_cookie(name) 
+  {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }
+</script>
+
 </body>
 </html>
