@@ -17,7 +17,7 @@
     <div id="a" >
     <nav>
         <ul>
-            <li><a href="#top"><b><em><i class="fa fa-home fa-2x" value="PLAY"  onclick="play()"></i> DelEazzy</em></b></a></li>
+            <li><a href="#/top"><b><em><i class="fa fa-home fa-2x" value="PLAY"  onclick="play()"></i> DelEazzy</em></b></a></li>
             <audio id="audio" src="./AV/deleazzy.mp3" ></audio>
             <li id="ab"><a href="#about"><b>About</b></a></li>
             <li id="log"><a href="#reg"><b>Register</b></a></li>
@@ -230,7 +230,15 @@ element2.addEventListener("keypress", function (e)
 {
     preventalpha(e);
 });
-
+var c = document.getElementById("logocanvas");
+var ctx = c.getContext("2d");
+ctx.font = "20px Roboto Mono, monospace";
+var gradient = ctx.createLinearGradient(0, 0, 150, 100);
+gradient.addColorStop(0, "rgb(255, 18, 0)");
+gradient.addColorStop(1, "rgb(255, 255, 167)");
+ctx.fillStyle = gradient;
+ctx.fillText("©️DelEazzy",10,50);
+var x= document.getElementById("location");  
 
 </script>
 </body>

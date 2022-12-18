@@ -24,11 +24,11 @@ angular.module("food",[])
     $scope.rowlimit=10;
     $scope.orderByMe = function(x) {
         $scope.myOrderBy = x;
-      }
-      $scope.customStyle = {};
-      $scope.turnGreen = function (){
-          $scope.customStyle.style = {"color":"green"};
-      }
+    }
+    $scope.customStyle = {};
+    $scope.turnGreen = function (){
+        $scope.customStyle.style = {"color":"green"};
+    }
       $scope.fname = " ";  
 
       $scope.changeColorFilter = function (item){
