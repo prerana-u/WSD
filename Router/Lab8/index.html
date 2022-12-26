@@ -46,20 +46,59 @@
 
 
 <script>
-  angular.module("myapp", ["ngRoute"])
+angular.module("myapp", ["ngRoute"])
 .config(function($routeProvider) {
   $routeProvider
   .when("/about", {
-    templateUrl : "about.html"
+    templateUrl : "about.html",
+    controller:"aboutCtrl"
   })
   .when("/register", {
     templateUrl : "register.html"
   })
   .when("/lab7", {
     templateUrl : "lab7.html",
+    controller:"foodctrl"
     
   })
 })
+.controller("aboutCtrl", function ($scope) {
+  $scope.msg = " DelEazzy aims to deliver meals to your doorstep in 15-30 minutes through a network of partner restaurants.With the rise of internet orders, particularly in the food and grocery industries, in recent years DelEazzy has started its latest initiative, DelEazzy, with the goal of delivering food and other necessities. DelEazzy is a chain of online convenience stores. Instant meals, snacks, fruits and vegetables, ice creams, and other things are available through these virtual convenience stores. DelEazzy provides these things through its partner “dark stores,” which are exclusively available online and its hubs.";
+})
+.controller("foodctrl",function($scope, $http)
+{
+  $http.get("https://prerana-u.github.io/WSD/data.json")
+  .then(function(response) {
+    $scope.fd=response.data;
+    $scope.rowlimit=9;
+    $scope.orderByMe = function(x) {
+        $scope.myOrderBy = x;
+    }
+    $scope.customStyle = {};
+    $scope.turnGreen = function (){
+        $scope.customStyle.style = {"color":"green"};
+    }
+      $scope.fname = " ";  
+
+      $scope.changeColorFilter = function (item){
+       
+         if (item.spice == 'High') {
+           item.class = 'High';
+       }
+       else if (item.spice == 'Low') {
+           item.class = 'Low';
+       }
+       else {
+           item.class = 'Medium';
+       }
+     
+       return true;
+        
+      };
+  });
+    
+    
+    })
 ;
 </script>
 
