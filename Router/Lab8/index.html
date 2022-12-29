@@ -23,7 +23,8 @@
             <audio id="audio" src="../../AV/deleazzy.mp3" ></audio>
             <li id="ab"><a href="#!about"><b>About</b></a></li>
             <li id="log"><a href="#!register"><b>Register</b></a></li>
-            <li id="log"><a href="#!lab7"><b>Menu</b></a></li>
+            <li id="log"><a href="#!menu"><b>Menu</b></a></li>
+            <li id="log"><a href="#!search"><b>Search</b></a></li>
         </ul>
         
     </nav>
@@ -56,9 +57,14 @@ angular.module("myapp", ["ngRoute"])
   .when("/register", {
     templateUrl : "register.html"
   })
-  .when("/lab7", {
+  .when("/menu", {
     templateUrl : "lab7.html",
     controller:"foodctrl"
+    
+  })
+  .when("/search", {
+    templateUrl : "search.html",
+    controller:"searchctrl"
     
   })
 })
@@ -74,11 +80,35 @@ angular.module("myapp", ["ngRoute"])
     $scope.orderByMe = function(x) {
         $scope.myOrderBy = x;
     }
+    $scope.changeColorFilter = function (item){
+       
+         if (item.spice == 'High') {
+           item.class = 'High';
+       }
+       else if (item.spice == 'Low') {
+           item.class = 'Low';
+       }
+       else {
+           item.class = 'Medium';
+       }
+     
+       return true;
+        
+      };
+  })
+})
+  .controller("searchctrl",function($scope, $http)
+{
+  $http.get("https://prerana-u.github.io/WSD/data.json")
+  .then(function(response) {
+    $scope.fd=response.data;
+    $scope.orderByMe = function(x) {
+        $scope.myOrderBy = x;
+    }
     $scope.customStyle = {};
     $scope.turnGreen = function (){
         $scope.customStyle.style = {"color":"green"};
     }
-      $scope.fname = " ";  
 
       $scope.changeColorFilter = function (item){
        

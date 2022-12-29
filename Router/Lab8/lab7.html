@@ -42,7 +42,7 @@
         label{
             font-weight: 700;
             padding-right: 20px;
-           
+            margin-left: 0px;
             font-family: 'Domine', serif;
             font-family: 'Spectral', serif;
             width: 200px;
@@ -72,30 +72,7 @@
        
         <div id="tablediv">
             <label style="margin-left: 0px;">Rows to Display:</label><input type="number" step="1" min="0" max="9" ng-model="rowlimit"/><br><br>
-            <div style="width:fit-content; height: 150px; padding: 10px;">
-                <div style="padding:20px; width: fit-content;float: left;"> 
-                
-                    <label>Search by Name: </label> <input ng-model="searchtxt.name" type="text" placeholder="Enter Name"  ng-keypress="turnGreen()"><br /><br />
-             
-               
-                    <label>Search by Price: </label><input ng-model="searchtxt.price" type="text" placeholder="Enter Price"><br /><br />
-                
-                
-            </div>
-            <div style="padding:20px; margin-top: 3px; width: fit-content;float: right;margin-left: 100px;">
-                <label>
-                    Search by Description: 
-                </label>
-                   <input ng-model="searchtxt.description" type="text" placeholder="Enter Description"><br /><br />
-                
-               <label>
-                Search by Spice Level: 
-               </label>
-                    <input ng-model="searchtxt.spice" type="text" placeholder="Enter Spice Level"><br /><br />
-                
-                
-            </div>
-            </div>
+           
             
             <div >
               

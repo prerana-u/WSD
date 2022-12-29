@@ -37,7 +37,7 @@ text-decoration: none;
 
 
 #ab{
-margin-left: 950px;
+margin-left: 850px;
 
 }
 body{
@@ -258,6 +258,14 @@ display: inline-block;
 border: 1px solid #000;
 background: #ffffff;  
 }  
+select{
+width:100%;
+padding: 15px;  
+margin: 10px 0px 32px -10px;  
+display: inline-block;  
+border: 1px solid #000;
+background: #ffffff;  
+}
 input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=email]:focus{  
 background-color: rgb(255, 255, 255);  
 outline: none;  
