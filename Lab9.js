@@ -1,11 +1,11 @@
-var port=3000
+
 const express = require("express");
 const app = express();
 var fs=require('fs')
 var path=require('path')
 
 const data = require("./data.json");
-
+app.use(express.static("public"));
 let nd = {
    name:"Peri Peri Fries",
    price:130,
@@ -15,7 +15,7 @@ let nd = {
    ftype:"Appetiser"
 };
 data.push(nd);
-app.use(express.static("public"));
+
 app.use(function (req, res, next) {
 
    // Website you wish to allow to connect
@@ -36,20 +36,18 @@ app.use(function (req, res, next) {
    next();
 }); 
 app.get("/", function (req, res) {
+   fs.writeFile("./data.json", JSON.stringify(data), err => {
+    
+      // Checking for errors
+     if (err) throw err; 
+     console.log("Done writing"); // Success
+  });
    fs.readFile('./data.json', 'utf8', function (err, data) {
        if (err) throw err;
        obj = JSON.parse(data);
-       console.log("The appetiser is:", obj[obj.length-1].name)
+       console.log("The appetiser is:", obj[0].name)
        res.send(JSON.stringify(obj));
      });
-   // fs.writeFile("./data.json", JSON.stringify(data), err => {
-    
-   //     // Checking for errors
-   //     if (err) throw err; 
-   //    console.log("Done writing"); // Success
-   // });
-
-
    
 })
 
