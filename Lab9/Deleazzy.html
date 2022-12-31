@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="css/deleazzy_css.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Domine&family=Spectral&display=swap" rel="stylesheet">
+    <script src="js/deleazzy.js"></script>
+    <title>DelEazzy</title>
+
+</head>
+<body onload="setColor()">
+    <div id="a" >
+    <nav>
+        <ul>
+            <li><a href="#/top"><b><em><i class="fa fa-home fa-2x" value="PLAY"  onclick="play()"></i> DelEazzy</em></b></a></li>
+            <audio id="audio" src="AV/deleazzy.mp3" ></audio>
+            <li id="ab"><a href="json_data"><b>Data</b></a></li>
+            <li id="log"><a href="reg"><b>Register</b></a></li>
+            <li id="log"><a href="menu"><b>Menu</b></a></li>
+        </ul>
+        
+    </nav>
+    <img src="Images/bowl.png" alt="food bowl" id="bowl"/>
+    </div>
+    <div id="d1">
+        <h1>Meals Made Easy!</h1>
+        <h2>Discover Food Delivery Options near you </h2>
+        <div class="fontuser">
+            <input type="text" id="loc" placeholder="Enter Location"> 
+            <i class="fa fa-map-marker fa-2x"></i> 
+        </div>
+        <button onclick="getlocation()" id="locbutton">Get Location</button>  
+         
+       
+    </div>
+    <img src="Images/wave.svg" id="wave"/>
+    <div>
+        
+        <table>
+            <tr>
+            <th colspan="3" id="top3">
+              <b>3 Most Ordered Dishes </b>
+            </th>
+           </tr>
+            <tr>
+                <th> Dish Name </th>
+                <th> Rating </th>
+                <th> More Details </th>
+            </tr>
+          <tr>
+            <td><h4>Ramen</h4><br><video width="500" height="300" controls preload="auto" muted>
+              <source src="AV/diverse-tokyo-ramen-tour-with-incredible-ramen-e.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <td> <i class="fa fa-star"></i> <em>4.5/5</em></td>
+            <td><a href="https://en.wikipedia.org/wiki/Ramen" target="_blank">Click to find out more about Ramen</a></td>
+          </tr>
+          <tr>
+            <td><h4>Burger</h4><br><video width="500" height="300" controls preload="auto">
+              <source src="AV/bk-ka-stunner-jugaad-feat.hrithik-roshan-fant.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <td> <i class="fa fa-star"></i> <em>4.2/5</em></td>
+            <td><a href="https://en.wikipedia.org/wiki/Hamburger" target="_blank">Click to find out more about Burgers</a></td>
+          </tr>
+          <tr>
+            <td><h4>Pizza</h4><br><video width="500" height="300" controls>
+              <source src="AV/domino-s-order-karna-safe-hai.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <td> <i class="fa fa-star"></i> <em>4.0/5</em></td>
+            <td><a href="https://en.wikipedia.org/wiki/Pizza" target="_blank">Click to find out more about Pizza</a></td>
+          </tr>
+        </table> 
+        
+    </div>
+    <div id="reg" >
+        <h2 style="color: #E33333;margin-top: 50px;">Registration Form</h2>
+        <p style="margin-bottom: 20px; margin-top:0px;"><b>Please fill in this form to create an account.</b></p>
+        
+        <form id="formid" >
+          <div class="container">  
+            <div id="errdiv" style="margin-left:-10px;">
+              <span id="error"></span>
+            </div>  
+            
+            <label for="fn"> First Name: </label>   
+          <input type="text" name="firstname" id="fn" placeholder= "Firstname" onblur="validateName()" size="15" required />   
+          
+          <label> Last Name: </label>   
+          <input type="text" name="lastname" id="ln" placeholder="Lastname" onblur="validateName()" size="15"required />   
+          <label> Date of Birth: </label>   
+          <input type="date" name="dob" placeholder="Date of Birth" size="15" min="1900-01-01" max="2004-12-31" id="dob" required />  
+          <div>  
+          <label>   
+          Occupation: :  
+          </label>   
+            
+          <select>  
+          <option value="Occupation">Occupation</option>  
+          <option value="Student">Student</option>  
+          <option value="Working Professional">Working Professional</option>  
+          <option value="Homemaker">Homemaker</option>  
+          </select>  
+          </div>  
+          <div> 
+            <br> 
+          <label>   
+          Gender :  
+          </label>
+          <input type="radio" value="Male" name="gender" checked > Male   
+          <input type="radio" value="Female" name="gender"> Female   
+          <input type="radio" value="Other" name="gender"> Other  
+            
+          </div> 
+          <br> 
+          <label>   
+          Phone :  
+          </label>  
+          <input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/>   
+          <div id="errdiv" style="margin-left:-10px;">
+            <span id="error1"></span>
+          </div>  
+          <input type="tel" name="phone" id="phno" placeholder="Phone No." onblur="validatePhone()" size="10" required/>   
+          <label>  Current Address :  </label>
+          <textarea cols="80" rows="5" placeholder="Current Address" value="address" required>  
+          </textarea>  
+          <div id="errdiv" style="margin-left:-10px;">
+            <span id="error2"></span>
+          </div>  
+           <label for="email"><b>Email</b></label>  
+           <input type="email" placeholder="Enter Email" name="email" id="email" onblur="validateEmail()" required>  
+           <div id="errdiv" style="margin-left:-10px;">
+            <span id="error3"></span>
+          </div>  
+              <label for="psw"><b>Password</b></label>  
+              <input type="password" placeholder="Enter Password" name="psw" id="pass1" onblur="validatePassword()" required>  
+            
+              <label for="psw-repeat"><b>Confirm Password</b></label>  
+              <input type="password" placeholder="Confirm Password" name="psw-repeat" id="cpass" onblur="validatePassword()" required>  
+              <label for="colorpicker"><b>Choose a color</b></label>  
+              <input id = "colorpicker" type = "color" value="#ffffff" onchange="changecolor(this)">
+              <br>
+              <button type="submit" class="registerbtn" onclick="storeValues()" >Register</button> 
+              </div>
+        </form>
+        
+    </div>
+    <div id="about" >
+        <h2 style="color: #E33333;">About Us</h2>
+        <p id="abouttext">
+        DelEazzy aims to deliver meals to your doorstep in 15-30 minutes through a network of partner restaurants.
+        With the rise of internet orders, particularly in the food and grocery industries, in recent years DelEazzy has started its latest initiative, DelEazzy, with the goal of delivering food and other necessities. DelEazzy is a chain of online convenience stores. Instant meals, snacks, fruits and vegetables, ice creams, and other things are available through these virtual convenience stores. DelEazzy provides these things through its partner “dark stores,” which are exclusively available online and its hubs.
+        </p>
+        <div class="cards">
+            <div class="card" style="float: left;">
+                <img src="./Images/target.png" alt="Avatar" style="width: fit-content;height: 240px;">
+                <div class="container1">
+                    <h4><b>Our Goals</b></h4>
+                   <ol style="padding:0px;">
+                    <li>Fast Delivery</li>
+                    <li>Be cost-effective</li>
+                    <li>Reach more customers</li>
+                   </ol>
+                </div>
+            </div>
+            <div class="card1" style="float: right;">
+                <img src="./Images/contact.png" alt="Avatar" style="width: fit-content;height: 240px;">
+                <div class="container1">
+                <h4><b>Contact Us</b></h4>
+                <ol style="padding:0px;">
+                    <li>Email: abcd@gmail.com</li>
+                    <li>Phone: +91 1201290201</li>
+                    <li>Instagram: @deleazzy</li>
+                   </ol>
+                </div>
+            </div>
+            <div class="card1" style="float: right;">
+                <img src="./Images/location.png" alt="Avatar" style="width: fit-content; height: 240px;">
+                <div class="container1">
+                <h4><b>Available Locations</b></h4>
+                <ol style="padding:0px;">
+                    <li>Bangalore</li>
+                    <li>Delhi</li>
+                    <li>Mumbai</li>
+                   </ol>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div>
+      <img src="./Images/india.webp" usemap="#indiamap"/>
+      <map name="indiamap">
+        <area target="_blank" shape="poly" coords="262,969,401,892,449,1120,335,1194" alt="Best Restaurants in Karnataka" href="https://www.google.com/search?q=best+restaurants+in+bangalore&rlz=1C1ONGR_enIN1004IN1004&oq=best+rest&aqs=chrome.2.0i512j0i433i457i512j0i512j69i57j0i512l2j0i433i512j0i512l3.4265j0j7&sourceid=chrome&ie=UTF-8">
+        <area target="_blank" alt="Best Restaurants in Chennai" title="Best Restaurants in Chennai" href="https://www.google.com/search?q=best+restaurants+in+chennai&amp;rlz=1C1ONGR_enIN1004IN1004&amp;oq=best+restaurants+in+chennai&amp;aqs=chrome..69i57j0i433i512j46i131i199i433i465i512j0i433i512j0i512j0i433i512l2j69i60.4417j0j7&amp;sourceid=chrome&amp;ie=UTF-8" coords="402,1300,392,1357,518,1248,530,1107,369,1196,417,1338,487,1297" shape="poly">
+        <area target="_blank" alt="Best Restaurants in Trivandrum" title="Best Restaurants in Trivandrum" href="https://www.google.com/search?q=best+restaurants+in+trivandrum&amp;rlz=1C1ONGR_enIN1004IN1004&amp;ei=CIpkY_j1HMmeseMPz6yOkAI&amp;oq=best+restaurants+in+trivand&amp;gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgCMggIABCABBCLAzIICAAQgAQQiwMyCAgAEIAEEIsDMggIABCABBCLAzIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQhgMyBQgAEIYDMgUIABCGAzoKCAAQRxDWBBCwAzoHCAAQsAMQQzoNCAAQ5AIQ1gQQsAMYAToSCC4QxwEQrwEQyAMQsAMQQxgCOgYIABAWEB5KBAhNGAFKBAhBGABKBAhGGAFQpglY6D1g90doA3ABeAKAAcADiAGAFpIBCjAuMTEuMS4xLjGYAQCgAQHIARK4AQPAAQHaAQYIARABGAnaAQYIAhABGAg&amp;sclient=gws-wiz-serp" coords="365,1332,285,1145,350,1193,398,1282,386,1336" shape="poly">
+        <area target="_blank" alt="Best Restaurants in Hyderabad" title="Best Restaurants in Hyderabad" href="https://www.google.com/search?q=best+restaurants+in+hyderabad&amp;rlz=1C1ONGR_enIN1004IN1004&amp;ei=aIpkY9HKMfehseMP3f-tUA&amp;ved=0ahUKEwjRnteHzpP7AhX3UGwGHd1_CwoQ4dUDCA8&amp;uact=5&amp;oq=best+restaurants+in+hyderabad&amp;gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIICAAQgAQQiwMyCAgAEIAEEIsDMggIABCABBCLAzIICAAQgAQQiwMyCAgAEIAEEIsDMggIABCABBCLAzIICAAQgAQQiwMyCAgAEIAEEIsDMggIABCABBCLAzIICAAQgAQQiwM6CggAEEcQ1gQQsAM6DQgAEEcQ1gQQyQMQsAM6CAgAEJIDELADSgQIQRgASgQIRhgAUOmMD1iDog9gtaYPaANwAXgAgAHCAogB9g6SAQcwLjMuNS4xmAEAoAEByAEKuAEDwAEB&amp;sclient=gws-wiz-serp" coords="392,1006,689,870,535,1107,455,1136,388,1091,381,1057" shape="poly">
+      </map>
+    </div>
+    <footer>
+      <canvas id="logocanvas" width="200px" height="80" >
+        Your browser does not support the HTML canvas tag.
+        </canvas>
+    </footer>
+    
+<script>
+  
+//Validate First and Last Name
+const element = document.getElementById("fn");
+element.addEventListener("keypress", function (e) 
+{
+    preventnum(e);
+});
+
+const element1 = document.getElementById("ln");
+element1.addEventListener("keypress", function (e) 
+{
+    preventnum(e);
+});
+
+const element2 = document.getElementById("phno");
+element2.addEventListener("keypress", function (e) 
+{
+    preventalpha(e);
+});
+var c = document.getElementById("logocanvas");
+var ctx = c.getContext("2d");
+ctx.font = "20px Roboto Mono, monospace";
+var gradient = ctx.createLinearGradient(0, 0, 150, 100);
+gradient.addColorStop(0, "rgb(255, 18, 0)");
+gradient.addColorStop(1, "rgb(255, 255, 167)");
+ctx.fillStyle = gradient;
+ctx.fillText("©️DelEazzy",10,50);
+var x= document.getElementById("location");  
+
+</script>
+</body>
+</html>
