@@ -3,19 +3,13 @@ const express = require("express");
 const app = express();
 var fs=require('fs')
 var path=require('path')
+var bodyParser = require('body-parser');
 
-const data = require("./data.json");
+
+
 app.use(express.static("public"));
-let nd = {
-   name:"Peri Peri Fries",
-   price:"130",
-   description:"Fried Potatoes served with peri peri masala.",
-   spice:"High",
-   calories:"350",
-   ftype:"Appetiser"
-};
-data.push(nd);
-
+app.use(bodyParser.urlencoded({extended: true}));
+app.engine('html', require('ejs').renderFile);
 app.use(function (req, res, next) {
 
    // Website you wish to allow to connect
@@ -44,23 +38,40 @@ app.get("/", function (req, res){
       throw err
       res.end(data)
 
-  })
+  });
 
 })
-app.get("/json_data", function (req, res) {
-   fs.writeFileSync("./data.json", JSON.stringify(data), err => {
+app.post("/json-data", function (req, res) {
+//    fs.writeFileSync("./data.json", JSON.stringify(data), err => {
     
-      // Checking for errors
-     if (err) throw err; 
-     console.log("Done writing"); // Success
-  });
-   fs.readFile('./data.json', 'utf8', function (err, data) {
-       if (err) throw err;
-       console.log(data); 
-       obj = JSON.parse(data);
-       console.log("The appetiser is:", obj[0].name)
-       res.send(JSON.stringify(obj));
+//       // Checking for errors
+//      if (err) throw err; 
+//      console.log("Done writing"); // Success
+//   });
+//    fs.readFile('./data.json', 'utf8', function (err, data) {
+//        if (err) throw err;
+      
+//        obj = JSON.parse(data);
+//        console.log("The first dish is:", obj[0].name)
+//        res.send(JSON.stringify(obj));
+//      });
+     let sentData = req.body;
+     console.log(sentData);
+     let data = fs.readFileSync('./data.json', 'utf-8');
+     data = JSON.parse(data.toString());
+     let content =  {"name":`${sentData.name}`, "price":`${sentData.price}`,"description":`${sentData.description}`,"spice":`${sentData.spice}`,"calories":`${sentData.calories}`,"ftype":`${sentData.ftype}`};
+ 
+     data.push(content);
+ 
+     let newData = JSON.stringify(data);
+     console.log(newData);
+ 
+     fs.writeFileSync("./data.json", newData, err=>{
+         if(err) {
+             console.log(err);
+         }
      });
+     res.send(newData);
    
 })
 app.get("/menu", function (req, res){
@@ -69,8 +80,7 @@ app.get("/menu", function (req, res){
      if(err)
      throw err
      res.end(data)
-
- })
+ });
 
 })
 app.get("/reg", function (req, res){
@@ -80,7 +90,7 @@ app.get("/reg", function (req, res){
      throw err
      res.end(data)
 
- })
+ });
 
 })
 app.listen(3000, function () {

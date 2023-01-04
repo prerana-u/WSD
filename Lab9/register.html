@@ -13,71 +13,52 @@
         <h2 style="color: #E33333;margin-top: 0px;">Registration Form</h2>
         <p style="margin-bottom: 20px; margin-top:0px;"><b>Please fill in this form to create an account.</b></p>
         
-        <form id="formid" >
+        <form id="formid" method="POST" action="/json-data">
           <div class="container">  
             <div id="errdiv" style="margin-left:-10px;">
               <span id="error"></span>
-            </div>  
+            </div>    
             
-            <label for="fn"> First Name: </label>   
-          <input type="text" name="firstname" id="fn" placeholder= "Firstname" onblur="validateName()" size="15" required />   
+            <label for="fn"> Dish Name: </label>   
+          <input type="text" name="name" id="fn" placeholder= "Dish name" onblur="validateName()" size="15" required />   
           
-          <label> Last Name: </label>   
-          <input type="text" name="lastname" id="ln" placeholder="Lastname" onblur="validateName()" size="15"required />   
-          <label> Date of Birth: </label>   
-          <input type="date" name="dob" placeholder="Date of Birth" size="15" min="1900-01-01" max="2004-12-31" id="dob" required />  
-          <div>  
+        
+          <br> 
           <label>   
-          Occupation: :  
-          </label>   
-            
-          <select>  
-          <option value="Occupation">Occupation</option>  
-          <option value="Student">Student</option>  
-          <option value="Working Professional">Working Professional</option>  
-          <option value="Homemaker">Homemaker</option>  
-          </select>  
-          </div>  
+          Price :  
+          </label>  
+          
+          <input type="number" name="price" id="price" placeholder="price"  size="10" required/>   
+          <br>
+          <label>  Description :  </label>
+          <textarea cols="80" rows="5" placeholder="Enter Description"  name="description" required>  
+          </textarea>  
           <div> 
             <br> 
           <label>   
-          Gender :  
+          Spice Level :  
           </label>
-          <input type="radio" value="Male" name="gender" checked > Male   
-          <input type="radio" value="Female" name="gender"> Female   
-          <input type="radio" value="Other" name="gender"> Other  
+          <input type="radio" value="High" name="spice" checked > High   
+          <input type="radio" value="Medium" name="spice"> Medium   
+          <input type="radio" value="Low" name="spice"> Low  
             
           </div> 
-          <br> 
           <label>   
-          Phone :  
-          </label>  
-          <input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/>   
-          <div id="errdiv" style="margin-left:-10px;">
-            <span id="error1"></span>
-          </div>  
-          <input type="tel" name="phone" id="phno" placeholder="Phone No." onblur="validatePhone()" size="10" required/>   
-          <label>  Current Address :  </label>
-          <textarea cols="80" rows="5" placeholder="Current Address" value="address" required>  
-          </textarea>  
-          <div id="errdiv" style="margin-left:-10px;">
-            <span id="error2"></span>
-          </div>  
-           <label for="email"><b>Email</b></label>  
-           <input type="email" placeholder="Enter Email" name="email" id="email" onblur="validateEmail()" required>  
-           <div id="errdiv" style="margin-left:-10px;">
-            <span id="error3"></span>
-          </div>  
-              <label for="psw"><b>Password</b></label>  
-              <input type="password" placeholder="Enter Password" name="psw" id="pass1" onblur="validatePassword()" required>  
+            Calories :  
+            </label>  
+            <input type="number" name="calories" id="cal" placeholder="calories"  size="10" required/> 
+            <div> 
+              <br> 
+            <label>   
+            Food Type :  
+            </label>
+            <input type="radio" value="Appetiser" name="ftype" checked > Appetiser   
+            <input type="radio" value="Main Course" name="ftype"> Main Course   
+            <input type="radio" value="Dessert" name="ftype"> Dessert  
+              
+            </div> 
+           <button type="submit" class="registerbtn" onclick="storeValues()" >Register</button> 
             
-              <label for="psw-repeat"><b>Confirm Password</b></label>  
-              <input type="password" placeholder="Confirm Password" name="psw-repeat" id="cpass" onblur="validatePassword()" required>  
-              <label for="colorpicker"><b>Choose a color</b></label>  
-              <input id = "colorpicker" type = "color" value="#ffffff" onchange="changecolor(this)">
-              <br>
-              <button type="submit" class="registerbtn" onclick="storeValues()" >Register</button> 
-              </div>
         </form>
         
     </div>
