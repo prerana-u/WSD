@@ -1,3 +1,75 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Menu</title>
+    <link type="text/css" href="css/deleazzy_css.css" rel="stylesheet">
+    <script src="js/deleazzy.js"></script>
+</head>
+<body onload="setColor()" style="background-color:#f7b8b8;">
+    <div id="reg">
+        <h2 style="color: #E33333;margin-top: 0px;">Add Food Item </h2>
+        <p style="margin-bottom: 20px; margin-top:0px;"><b>Please fill in this form to add an item to your menu.</b></p>
+        
+        <form id="formid" method="POST" action="/json-data">
+          <div class="container">  
+            <div id="errdiv" style="margin-left:-10px;">
+              <span id="error"></span>
+            </div>    
+            
+            <label for="fn"> Dish Name: </label>   
+          <input type="text" name="name" id="fn" placeholder= "Dish name" onblur="validateName()" size="15" required />   
+          
+        
+          <br> 
+          <label>   
+          Price :  
+          </label>  
+          
+          <input type="number" name="price" id="price" placeholder="price"  size="10" required/>   
+          <br>
+          <label>  Description :  </label>
+          <textarea cols="80" rows="5" placeholder="Enter Description"  name="description" required>  
+          </textarea>  
+          <div> 
+            <br> 
+            
+          <label>   
+          Spice Level :  
+          </label>
+          <input type="radio" value="High" name="spice" checked > High   
+          <input type="radio" value="Medium" name="spice"> Medium   
+          <input type="radio" value="Low" name="spice"> Low  
+            
+          </div> 
+          <br>
+          <label>   
+            Calories :  
+            </label>  
+            <input type="number" name="calories" id="cal" placeholder="calories"  size="10" required/> 
+            <br> 
+            <div> 
+           
+            <label>   
+            Food Type :  
+            </label>
+            <input type="radio" value="Appetiser" name="ftype" checked > Appetiser   
+            <input type="radio" value="Main Course" name="ftype"> Main Course   
+            <input type="radio" value="Dessert" name="ftype"> Dessert  
+              
+            </div>
+            <br> 
+           <button type="submit" class="registerbtn" onclick="storeValues()" >Register</button> 
+            
+        </form>
+        
+    </div>
+   
+</body>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,4 +158,5 @@
       
       </script>
 </body>
+>>>>>>> 1ff62237edc248dfa38deef485b38b8028292ecf
 </html>
